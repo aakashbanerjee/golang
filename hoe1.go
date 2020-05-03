@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	x := 42
-	var y = "James Bond"
+	y := "James Bond"
 	z := true
 
 	//single print statement
