@@ -145,7 +145,7 @@ func main() {
 	fmt.Println(s.friends)
 	fmt.Println(s.favDrinks)
 
-	for k, _ := range s.friends {
-		fmt.Println(k)
+	for k, v := range s.friends {
+		fmt.Println(k, v)
 	}
 }
