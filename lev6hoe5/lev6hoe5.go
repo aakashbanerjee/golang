@@ -15,6 +15,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"strconv"
 )
 
 type square struct {
@@ -60,4 +61,60 @@ func main() {
 
 	info(s1)
 	info(c1)
+
+	//Build and use an anonymous func - hoe6
+	func() {
+		fmt.Println("I am in an anonymous func..")
+		for i := 0; i < 10; i++ {
+			fmt.Println(i)
+		}
+	}()
+
+	//Assign a func to a variable, then call that func
+	f := func() {
+		fmt.Println("I am in an anonymous func assigned to a variable")
+		for i := 0; i < 10; i++ {
+			fmt.Println("A" + strconv.Itoa(i))
+		}
+	}
+	fmt.Println("Calling func using var f that has been initialized with a func")
+	f()
+	fmt.Printf("var f is of type: %T\n", f)
+
+	/*hoe 8 Create a func which returns a func
+	  assign the returned func to a variable
+	  call the returned func*/
+	returnedFunc := callA()
+	fmt.Printf("var returnedFunc is of type: %T\n", f)
+	returnedInt := returnedFunc()
+	fmt.Println("I am the returned int from the returned func: ", returnedInt)
+
+	//hoe 9
+	/*A “callback” is when we pass a func into a func as an argument. For this exercise,
+	  pass a func into a func as an argument -- NOT DONE passing a func inside a func as an argument*/
+
+	//hoe10
+	/*Closure is when we have “enclosed” the scope of a variable in some code block.
+	  For this hands-on exercise, create a func which “encloses” the scope of a variable:*/
+	fincrement := inc()
+	fmt.Println(fincrement())
+	fmt.Println(fincrement())
+	fmt.Println(fincrement())
+	fmt.Println(fincrement())
+	fmt.Println(fincrement())
+}
+
+func inc() func() int {
+	n := 0
+	return func() int {
+		n++
+		return n
+	}
+}
+
+func callA() func() int {
+	return func() int {
+		fmt.Println("I am in the return func")
+		return 007
+	}
 }
