@@ -99,4 +99,7 @@ func main() {
 	fmt.Println(gopath)
 	user := os.Getenv("USER")
 	fmt.Println(user)
+
+	emptyslice := []string{}
+	fmt.Println(emptyslice)
 }
